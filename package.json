@@ -1,0 +1,29 @@
+{
+  "name": "lookup-fs",
+  "version": "1.0.0",
+  "description": "Looks for a provided file in the current directory and all parent directories and returns the first found file path",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --ui tdd test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sullenor/lookup-fs.git"
+  },
+  "keywords": [
+    "lookup",
+    "fs"
+  ],
+  "author": "Alexey Litvinov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sullenor/lookup-fs/issues"
+  },
+  "homepage": "https://github.com/sullenor/lookup-fs#readme",
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  }
+}
