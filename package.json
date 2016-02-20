@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Looks for a provided file in the current directory and all parent directories and returns the first found file path",
   "engines": {
-    "node": ">=0.12",
+    "node": ">=0.12"
   },
   "main": "index.js",
   "scripts": {
