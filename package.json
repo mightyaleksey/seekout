@@ -1,6 +1,6 @@
 {
   "name": "seekout",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Looks for a provided file in the current directory and all parent directories and returns the first found file path",
   "engines": {
     "node": ">=0.12"
