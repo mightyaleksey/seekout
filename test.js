@@ -1,10 +1,10 @@
 'use strict';
 
-const assert = require('assert');
-const resolve = require('path').resolve;
-const seekout = require('.');
+var assert = require('assert');
+var resolve = require('path').resolve;
+var seekout = require('./index');
 
-const cases = [
+var cases = [
   {
     file: 'package.json',
     expected: resolve('./package.json'),
@@ -35,9 +35,9 @@ const cases = [
   },
 ];
 
-suite('seekout', () => {
-  cases.forEach(testCase => {
-    test(testCase.name, () => {
+suite('seekout', function () {
+  cases.forEach(function (testCase) {
+    test(testCase.name, function () {
       assert.equal(seekout(testCase.file, testCase.wd), testCase.expected);
     });
   });
