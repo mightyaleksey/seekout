@@ -1,45 +1,46 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
+var existsSync = require('fs').existsSync;
+var resolve = require('path').resolve;
+var sep = require('path').sep || '/';
 
 /**
- * @param {string}   file
- * @param {string}   parent
- * @param {function} callback
+ * @param  {string} filename
+ * @param  {string} [workdir]
+ * @return {string|null}
  */
-function lookupFileSystem(file, parent, callback) {
-  if (typeof parent === 'function') {
-    callback = parent;
-    parent = module.parent ? path.dirname(module.parent.filename) : process.cwd();
+function seakout(filename, workdir) {
+  var paths = getDirs(resolve(workdir || process.cwd()));
+  var length = paths.length;
+  var filepath;
+
+  for (var i = 0; i < length; i++) {
+    filepath = paths[i] + sep + filename;
+
+    if (!existsSync(filepath)) {
+      continue;
+    }
+
+    return filepath;
   }
 
-  lookup(file, parent, callback);
+  return null;
 }
 
 /**
- * @param {string}   file
- * @param {string}   parent
- * @param {function} cb
+ * @param  {string} directory
+ * @return {string[]}
  */
-function lookup(file, parent, cb) {
-  var filepath = path.join(parent, file);
+function getDirs(directory) {
+  var chunks = directory.split(sep);
+  var paths = [];
 
-  fs.stat(filepath, function (er, stats) {
-    if (er && er.code !== 'ENOENT') {
-      return void cb(er);
-    }
+  while (chunks.length) {
+    paths.push(chunks.join(sep));
+    chunks.pop();
+  }
 
-    if (!er && stats.isFile()) {
-      return void cb(null, filepath);
-    }
-
-    if (path.parse(parent).root !== parent) {
-      return void lookup(file, path.dirname(parent), cb);
-    }
-
-    cb(null, null);
-  });
+  return paths;
 }
 
-module.exports = lookupFileSystem;
+module.exports = seakout;

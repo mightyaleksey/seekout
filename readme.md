@@ -1,25 +1,29 @@
-lookup-fs
-=========
+seekout
+=======
 
 Looks for a provided file in the current directory. Also checks all parent directories and returns the first found file path.
 
 ## Installation
 
 ```bash
-$ npm install lookup-fs
+$ npm install seekout
 ```
 
 ## Usage
 
 ```javascript
-var lookupFileSystem = require('lookup-fs');
+const seekout = require('seekout');
 
-lookupFileSystem('.npmrc', function (err, filepath) {
-  if (err) {
-    throw err;
-  }
+seekout('.npmrc');
+// "/Users/sullenor/.npmrc"
+// or null if file was not found
+```
 
-  console.log(filepath); // /Users/sullenor/.npmrc
-                         // or null if file was not found
-});
+You can also specify any certain working directory by the second argument.
+
+```javascript
+const seekout = require('seekout');
+
+seekout('package.json', './seekout');
+// "/../seekout/package.json"
 ```

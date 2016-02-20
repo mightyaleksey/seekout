@@ -1,17 +1,18 @@
 {
-  "name": "lookup-fs",
+  "name": "seekout",
   "version": "1.0.0",
   "description": "Looks for a provided file in the current directory and all parent directories and returns the first found file path",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "engines": {
+    "node": ">=0.12",
   },
+  "main": "index.js",
   "scripts": {
-    "test": "mocha --ui tdd test/**/*.js"
+    "test": "mocha --ui tdd test.js",
+    "test:w": "$npm_package_scripts_test --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sullenor/lookup-fs.git"
+    "url": "git+https://github.com/sullenor/seekout.git"
   },
   "keywords": [
     "lookup",
@@ -20,9 +21,9 @@
   "author": "Alexey Litvinov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sullenor/lookup-fs/issues"
+    "url": "https://github.com/sullenor/seekout/issues"
   },
-  "homepage": "https://github.com/sullenor/lookup-fs#readme",
+  "homepage": "https://github.com/sullenor/seekout#readme",
   "devDependencies": {
     "mocha": "^2.3.4"
   }
